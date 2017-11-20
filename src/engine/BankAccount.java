@@ -7,11 +7,15 @@ public class BankAccount {
 	private String name;
 	private String phoneNumber;
 	private String address;
-	private long balance;
+	private double balance;
 	
 	private String accountSignature;
 	
-	public BankAccount(String name, String phoneNumber, String address, long balance) {
+	public BankAccount() {
+		this("UNKNOWN", "UNKNOWN", "UNKNOWN", 0);
+	}
+	
+	public BankAccount(String name, String phoneNumber, String address, double balance) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
@@ -19,14 +23,14 @@ public class BankAccount {
 		generateAccountSignature();
 	}
 	
-	public void withdraw(long amount) throws Exception {
-		if (amount > balance) throw new Exception("Impossible");
-		if (amount <= 0) throw new Exception("Impossible");
+	public void withdraw(double amount) throws Exception {
+		if (amount > balance) throw new Exception("Het aangevraagd aantal is te hoog!");
+		if (amount <= 0) throw new Exception("Het aangevraagd aantal is te laag!");
 		balance -= amount;
 	}
 	
-	public void deposit(long amount) throws Exception {
-		if (amount <= 0) throw new Exception("Impossible");
+	public void deposit(double amount) throws Exception {
+		if (amount <= 0) throw new Exception("Het aangevraagd aantal is te laag!");
 		balance += amount;
 	}
 	
@@ -48,7 +52,7 @@ public class BankAccount {
 	public String getName() { return name; }
 	public String getPhoneNumber() { return phoneNumber; }
 	public String getAddress() { return address; }
-	public long getBalance() { return balance; }
+	public double getBalance() { return balance; }
 	public String getAccountSignature() { return accountSignature; }
 	
 	public void setName(String name) { this.name = name; }

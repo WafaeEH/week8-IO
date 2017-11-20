@@ -1,4 +1,4 @@
-package presentation;
+package presentation.nodes;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

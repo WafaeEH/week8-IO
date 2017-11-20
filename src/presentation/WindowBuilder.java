@@ -4,12 +4,13 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import engine.BankAccountList;
 import engine.handlers.ButtonHandler;
+import presentation.nodes.PanelCreateBankAccount;
+import presentation.nodes.PanelMainMenu;
 
 public class WindowBuilder extends JFrame {
 
@@ -48,7 +49,6 @@ public class WindowBuilder extends JFrame {
 	
 	private void initComponents() {
 		panelMainMenu = new PanelMainMenu();
-		ButtonHandler.importPanelMainMenu(panelMainMenu);
 		panelCreateBankAccount = new PanelCreateBankAccount();
 		ButtonHandler.importPanelCreateBankAccount(panelCreateBankAccount);
 	}

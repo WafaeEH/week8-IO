@@ -10,6 +10,10 @@ public class BankAccountList {
 		list.add(account);
 	}
 	
+	public BankAccount get(int i) {
+		return list.get(i);
+	}
+	
 	public void printAccounts() {
 		list.forEach(System.out::println);
 	}
