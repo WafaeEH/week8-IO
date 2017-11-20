@@ -42,12 +42,7 @@ public class BankAccount {
 	}
 	
 	public String toString() {
-		return "##############\n" +
-			   "Rekening: " + accountSignature + "\n" +
-			   "Name: " + name + "\n" +
-			   "PhoneNumber: " + phoneNumber + "\n" +
-			   "Address: " + address + "\n" +
-			   "Balance: " + balance;
+		return accountSignature;
 	}
 	
 	public String getName() { return name; }

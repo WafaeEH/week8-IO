@@ -13,9 +13,9 @@ public class PanelBankAccounts extends JPanel {
 
 	private static final long serialVersionUID = 8623223755624917107L;
 
-	private JList<String> list;
+	private JList<BankAccount> list;
 	private JScrollPane scroll;
-	private DefaultListModel<String> listModel;
+	private DefaultListModel<BankAccount> listModel;
 	
 	public PanelBankAccounts() {
 		super(new BorderLayout());
@@ -26,6 +26,6 @@ public class PanelBankAccounts extends JPanel {
 	}
 	
 	public void addToList(BankAccount account) {
-		listModel.addElement(account.getAccountSignature());
+		listModel.addElement(account);
 	}
 }
