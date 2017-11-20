@@ -2,6 +2,8 @@ package engine;
 
 import java.util.Random;
 
+import engine.IO.Writer;
+
 public class BankAccount {
 
 	private String name;
@@ -23,15 +25,27 @@ public class BankAccount {
 		generateAccountSignature();
 	}
 	
+	public BankAccount build(String readedString) {
+		String[] split = readedString.split(";");
+		setSignature(split[0]);
+		setName(split[1]);
+		setPhoneNumber(split[2]);
+		setAddress(split[3]);
+		setBalance(Double.parseDouble(split[4]));
+		return this;
+	}
+	
 	public void withdraw(double amount) throws Exception {
 		if (amount > balance) throw new Exception("Het aangevraagd aantal is te hoog!");
 		if (amount <= 0) throw new Exception("Het aangevraagd aantal is te laag!");
 		balance -= amount;
+		Writer.write(getAccountSignature(), getDetails());
 	}
 	
 	public void deposit(double amount) throws Exception {
 		if (amount <= 0) throw new Exception("Het aangevraagd aantal is te laag!");
 		balance += amount;
+		Writer.write(getAccountSignature(), getDetails());
 	}
 	
 	private void generateAccountSignature() {
@@ -45,6 +59,14 @@ public class BankAccount {
 		accountSignature = accountSignature.substring(4);
 	}
 	
+	public void write() {
+		Writer.write(getAccountSignature(), getDetails());
+	}
+	
+	private String getDetails() {
+		return getAccountSignature() + ";" + getName() + ";" + getPhoneNumber() + ";" + getAddress() + ";" + getBalance();
+	}
+	
 	public String toString() {
 		return accountSignature;
 	}
@@ -55,8 +77,9 @@ public class BankAccount {
 	public double getBalance() { return balance; }
 	public String getAccountSignature() { return accountSignature; }
 	
+	public void setSignature(String signature) { accountSignature = signature; }
 	public void setName(String name) { this.name = name; }
 	public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 	public void setAddress(String address) { this.address = address; }
-	public void setBalance(long balance) { this.balance = balance; }
+	public void setBalance(double balance) { this.balance = balance; }
 }

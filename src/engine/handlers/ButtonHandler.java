@@ -101,9 +101,9 @@ public class ButtonHandler {
 				BankAccount account = new BankAccount(name, phone, address, value);
 				accounts.addAccount(account);
 				panelBankAccounts.addToList(account);
-				System.out.println("Account Created");
 				mainGrid.changeTab("MainMenu");
 				panelCreateBankAccount.reset();
+				account.write();
 			}
 			
 		};
