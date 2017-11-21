@@ -103,7 +103,7 @@ public class ButtonHandler {
 				panelBankAccounts.addToList(account);
 				mainGrid.changeTab("MainMenu");
 				panelCreateBankAccount.reset();
-				account.write();
+				account.writeObject();
 			}
 			
 		};

@@ -1,15 +1,20 @@
 package engine;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import engine.IO.Writer;
 
-public class BankAccount {
+public class BankAccount implements Serializable {
 
+	private static final long serialVersionUID = 1256532397751798948L;
+	
 	private String name;
 	private String phoneNumber;
 	private String address;
 	private double balance;
+	
+	private Random rand;
 	
 	private String accountSignature;
 	
@@ -22,6 +27,7 @@ public class BankAccount {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.balance = balance;
+		rand = new Random();
 		generateAccountSignature();
 	}
 	
@@ -49,7 +55,6 @@ public class BankAccount {
 	}
 	
 	private void generateAccountSignature() {
-		Random rand = new Random();
 		int value = 0;
 		for (int i = 0; i < 24; i++) {
 			if (i % 4 == 0 && i != 0 && i != 24) accountSignature += "-";
@@ -59,7 +64,11 @@ public class BankAccount {
 		accountSignature = accountSignature.substring(4);
 	}
 	
-	public void write() {
+	public void writeObject() {
+		Writer.writeObject(this);
+	}
+	
+	public void writeDetails() {
 		Writer.write(getAccountSignature(), getDetails());
 	}
 	

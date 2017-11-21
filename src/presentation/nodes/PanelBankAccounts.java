@@ -36,10 +36,11 @@ public class PanelBankAccounts extends JPanel {
 		ButtonHandler.importFrameAccount(accountFrame);
 		ButtonHandler.importEngineBankAccountsList(accounts);
 		list.addMouseListener(ButtonHandler.setMouseBankAccountList());
-		Reader.read(accounts, this);
+		Reader.readBankAccounts(this);
 	}
 	
 	public void addToList(BankAccount account) {
+		accounts.addAccount(account);
 		listModel.addElement(account);
 	}
 }
